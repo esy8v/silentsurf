@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SilentSurf - No-Log VPN Service</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0f172a; /* very dark blue */
+    color: #e0e7ff; /* light grayish blue */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  h1, h2, h3 {
+    margin: 0 0 0.5em 0;
+    font-weight: 600;
+  }
+  p {
+    margin: 0 0 1.25em 0;
+    line-height: 1.5;
+    color: #cbd5e1;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    flex-grow: 1;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  header h1 {
+    font-size: 2.8rem;
+    letter-spacing: 1.5px;
+    color: #e0e7ff;
+  }
+  header p {
+    font-size: 1.15rem;
+    color: #94a3b8;
+  }
+
+  /* Features section */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .feature {
+    background: #1e293b; /* dark slate */
+    border-radius: 8px;
+    flex: 1 1 280px;
+    padding: 1.8rem;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+    text-align: left;
+    transition: background 0.3s ease;
+  }
+  .feature:hover {
+    background: #334155;
+  }
+  .feature h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #e0e7ff;
+  }
+
+  /* Pricing */
+  .pricing-section {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  .pricing-toggle {
+    margin-bottom: 2rem;
+  }
+  .toggle-label {
+    font-weight: 600;
+    margin: 0 1rem;
+    cursor: pointer;
+    color: #94a3b8;
+  }
+  .toggle-label input {
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  .plans {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .plan {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 280px;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 0.4);
+    flex: 1 1 280px;
+    transition: transform 0.3s ease;
+    text-align: left;
+    color: #cbd5e1;
+  }
+  .plan:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 0.6);
+  }
+  .plan-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #f1f5f9;
+  }
+  .plan-price {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #38bdf8; /* bright blue */
+  }
+  .plan-duration {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 1.3rem;
+  }
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .plan-features li {
+    margin-bottom: 0.7rem;
+  }
+
+  /* Fixed single purchase button at bottom center */
+  #purchaseBtn {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2563eb; /* blue */
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 1rem 3rem;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgb(37 99 235 / 0.6);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+  }
+  #purchaseBtn:hover {
+    background: #1e40af;
+    box-shadow: 0 10px 25px rgb(30 64 175 / 0.8);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .features {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .plans {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <header class="container" role="banner">
+    <h1>SilentSurf</h1>
+    <p>No-Log VPN Service Focused on Privacy & Security</p>
+  </header>
+
+  <main class="container" role="main" aria-label="Features and Pricing">
+    <section class="features" aria-label="Key Features">
+      <article class="feature" tabindex="0">
+        <h3>Privacy First</h3>
+        <p>We keep no logs, ensuring your online activities remain completely private and anonymous.</p>
+      </article>
+      <article class="feature" tabindex="0">
+        <h3>Fast & Reliable</h3>
+        <p>Optimized servers worldwide deliver fast and consistent speeds without compromising security.</p>
+      </article>
+      <article class="feature" tabindex="0">
+        <h3>Easy to Use</h3>
+        <p>Simple apps for all your devices — connect with a single click, anytime, anywhere.</p>
+      </article>
+    </section>
+
+    <section class="pricing-section" aria-label="Pricing Plans">
+      <div class="pricing-toggle" role="radiogroup" aria-label="Choose billing cycle">
+        <label class="toggle-label" for="monthly">
+          <input type="radio" name="billing" id="monthly" value="monthly" checked aria-checked="true" />
+          1 Month
+        </label>
+        <label class="toggle-label" for="quarterly">
+          <input type="radio" name="billing" id="quarterly" value="quarterly" aria-checked="false" />
+          3 Months
+        </label>
+        <label class="toggle-label" for="yearly">
+          <input type="radio" name="billing" id="yearly" value="yearly" aria-checked="false" />
+          1 Year
+        </label>
+      </div>
+
+      <div class="plans" id="plans-container" role="list">
+        <!-- Pricing plans inserted by JS -->
+      </div>
+    </section>
+  </main>
+
+  <button
+    id="purchaseBtn"
+    aria-label="Purchase SilentSurf VPN - Redirect to Telegram"
+    type="button"
+  >
+    Purchase SilentSurf
+  </button>
+
+<script>
+  // Updated Pricing data with your specified plans
+  const plansData = {
+    monthly: [
+      {
+        title: '1 Month',
+        price: 40.99,
+        features: [
+          'Your entire own server',
+          'Private IP',
+          'Unlimited Bandwidth',
+          '24/7 Premium Support'
+        ]
+      }
+    ],
+    quarterly: [
+      {
+        title: '3 Months',
+        price: 59.99,
+        features: [
+          'Your entire own server',
+          'Private IP',
+          'Unlimited Bandwidth',
+          '24/7 Premium Support'
+        ]
+      }
+    ],
+    yearly: [
+      {
+        title: '1 Year',
+        price: 99.99,
+        features: [
+          'Your entire own server',
+          'Private IP',
+          'Unlimited Bandwidth',
+          '24/7 Premium Support'
+        ]
+      }
+    ]
+  };
+
+  const plansContainer = document.getElementById('plans-container');
+  const billingRadios = document.querySelectorAll('input[name="billing"]');
+  const purchaseBtn = document.getElementById('purchaseBtn');
+
+  function formatPrice(price) {
+    return `$${price.toFixed(2)}`;
+  }
+
+  function renderPlans(billingCycle) {
+    plansContainer.innerHTML = '';
+    const plans = plansData[billingCycle] || [];
+    plans.forEach((plan) => {
+      const planElem = document.createElement('article');
+      planElem.className = 'plan';
+      planElem.setAttribute('role', 'listitem');
+      planElem.tabIndex = 0;
+
+      let priceText = '';
+      if (billingCycle === 'monthly') {
+        priceText = formatPrice(plan.price) + ' / month';
+      } else if (billingCycle === 'quarterly') {
+        priceText = formatPrice(plan.price) + ' / 3 months';
+      } else if (billingCycle === 'yearly') {
+        priceText = formatPrice(plan.price) + ' / year';
+      } else {
+        priceText = formatPrice(plan.price);
+      }
+
+      planElem.innerHTML = `
+        <h3 class="plan-title">${plan.title}</h3>
+        <p class="plan-price">${priceText}</p>
+        <ul class="plan-features">
+          ${plan.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+      `;
+
+      plansContainer.appendChild(planElem);
+    });
+  }
+
+  // Initialize plans with monthly default
+  renderPlans('monthly');
+
+  billingRadios.forEach(radio => {
+    radio.addEventListener('change', e => {
+      renderPlans(e.target.value);
+      billingRadios.forEach(r => r.setAttribute('aria-checked', r.checked));
+    });
+  });
+
+  // Purchase button click - redirect to Telegram link (update link below)
+  purchaseBtn.addEventListener('click', () => {
+    // Replace '#' with your Telegram link
+    window.location.href = 'https://t.me/VPNsilentsurf';
+  });
+</script>
+
+</body>
+</html>
